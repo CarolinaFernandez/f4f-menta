@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<rspec xmlns="http://www.geni.net/resources/rspec/3" xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" xmlns:jfedBonfire="http://jfed.iminds.be/rspec/ext/jfed-bonfire/1" xmlns:delay="http://www.protogeni.net/resources/rspec/ext/delay/1" xmlns:jfed-command="http://jfed.iminds.be/rspec/ext/jfed-command/1" xmlns:client="http://www.protogeni.net/resources/rspec/ext/client/1" xmlns:jfed-ssh-keys="http://jfed.iminds.be/rspec/ext/jfed-ssh-keys/1" xmlns:jfed="http://jfed.iminds.be/rspec/ext/jfed/1" xmlns:openflow="http://www.geni.net/resources/rspec/ext/openflow/3" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xmlns:sharedvlan="http://www.protogeni.net/resources/rspec/ext/shared-vlan/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" type="request" generated_by="jFed RSpec Editor" generated="2015-07-17T17:02:05.768+02:00" xsi:schemaLocation="http://www.geni.net/resources/rspec/3             http://www.geni.net/resources/rspec/3/request.xsd             http://www.geni.net/resources/rspec/ext/openflow/3             http://www.geni.net/resources/rspec/ext/openflow/3/of-resv.xsd">
+  <openflow:sliver description="Menta OF scenario" email="<$EXPERIMENTER_EMAIL>">
+    <openflow:controller type="primary" url="tcp:<$CONTROLLER_IP>:6633"/>
+    <openflow:group name="MentaFilter">
+      <openflow:datapath component_manager_id="urn:publicid:IDN+openflow:ofam:univbris+authority+cm" component_id="urn:publicid:IDN+openflow:ofam:univbris+datapath+05:00:00:00:00:00:00:01" dpid="05:00:00:00:00:00:00:01">
+        <openflow:port num="5" name="GBE0/5"/>
+        <openflow:port num="6" name="GBE0/6"/>
+      </openflow:datapath>
+      <openflow:datapath component_manager_id="urn:publicid:IDN+openflow:ofam:univbris+authority+cm" component_id="urn:publicid:IDN+openflow:ofam:univbris+datapath+05:00:00:00:00:00:00:03" dpid="05:00:00:00:00:00:00:03">
+        <!-- Connection to i2CAT -->
+        <openflow:port num="7" name="GBE0/7"/>
+        <openflow:port num="18" name="GBE0/18"/>
+      </openflow:datapath>
+    </openflow:group>
+    <openflow:match>
+      <openflow:use-group name="MentaFilter"/>
+      <openflow:packet>
+        <openflow:dl_vlan value="2138"/>
+      </openflow:packet>
+    </openflow:match>
+  </openflow:sliver>
+</rspec>
+

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<rspec xmlns="http://www.geni.net/resources/rspec/3" xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" xmlns:jfedBonfire="http://jfed.iminds.be/rspec/ext/jfed-bonfire/1" xmlns:delay="http://www.protogeni.net/resources/rspec/ext/delay/1" xmlns:jfed-command="http://jfed.iminds.be/rspec/ext/jfed-command/1" xmlns:client="http://www.protogeni.net/resources/rspec/ext/client/1" xmlns:jfed-ssh-keys="http://jfed.iminds.be/rspec/ext/jfed-ssh-keys/1" xmlns:jfed="http://jfed.iminds.be/rspec/ext/jfed/1" xmlns:openflow="http://www.geni.net/resources/rspec/ext/openflow/3" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xmlns:sharedvlan="http://www.protogeni.net/resources/rspec/ext/shared-vlan/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" type="request" generated_by="jFed RSpec Editor" generated="2015-07-17T17:02:05.768+02:00" xsi:schemaLocation="http://www.geni.net/resources/rspec/3             http://www.geni.net/resources/rspec/3/request.xsd             http://www.geni.net/resources/rspec/ext/openflow/3             http://www.geni.net/resources/rspec/ext/openflow/3/of-resv.xsd">
+  <openflow:sliver description="Menta OF scenario" email="<$EXPERIMENTER_EMAIL>">
+    <openflow:controller type="primary" url="tcp:<$CONTROLLER_IP>:6633"/>
+    <openflow:group name="MentaFilter">
+      <openflow:datapath component_manager_id="urn:publicid:IDN+openflow:ocf:i2cat:ofam+authority+cm" component_id="urn:publicid:IDN+openflow:ocf:i2cat:ofam+datapath+00:10:00:00:00:00:00:01" dpid="00:10:00:00:00:00:00:01">
+        <openflow:port num="3" name="GBE0/3"/>
+        <openflow:port num="12" name="GBE0/12"/>
+      </openflow:datapath>
+      <openflow:datapath component_manager_id="urn:publicid:IDN+openflow:ocf:i2cat:ofam+authority+cm" component_id="urn:publicid:IDN+openflow:ocf:i2cat:ofam+datapath+00:10:00:00:00:00:00:03" dpid="00:10:00:00:00:00:00:03">
+        <openflow:port num="1" name="GBE0/1"/>
+        <openflow:port num="4" name="GBE0/4"/>
+        <!-- Connection to UnivBRIS -->
+        <openflow:port num="9" name="GBE0/9"/>
+        <openflow:port num="12" name="GBE0/12"/>
+      </openflow:datapath>
+      <openflow:datapath component_manager_id="urn:publicid:IDN+openflow:ocf:i2cat:ofam+authority+cm" component_id="urn:publicid:IDN+openflow:ocf:i2cat:ofam+datapath+00:10:00:00:00:00:00:04" dpid="00:10:00:00:00:00:00:04">
+        <openflow:port num="3" name="GBE0/3"/>
+        <openflow:port num="12" name="GBE0/12"/>
+      </openflow:datapath>
+    </openflow:group>
+    <openflow:match>
+      <openflow:use-group name="MentaFilter"/>
+      <openflow:packet>
+        <openflow:dl_vlan value="2138"/>
+      </openflow:packet>
+    </openflow:match>
+  </openflow:sliver>
+</rspec>
