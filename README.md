@@ -1,6 +1,7 @@
 ### Important notes
 
 1. Clone this repository into the local folder:
+
     ```
     su menta
     cd ~
